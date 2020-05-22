@@ -5,7 +5,7 @@ import { CREATE_USER, REQUEST_USERS, UPDATE_USER, DELETE_USER } from "./constant
 import { postData, getData, deleteData, putData } from "./api";
 
 function* getApiUsers(action) {
-  console.log(123);
+  console.log('get');
   
   try {
     const users = yield call(() => getData());
@@ -18,7 +18,7 @@ function* getApiUsers(action) {
 }
 
 function* postApiUsers(action) {
-  console.log(22);
+  console.log('post');
   
   try {
     yield call(() => postData(action.data));
@@ -30,6 +30,7 @@ function* postApiUsers(action) {
   }
 }
 function* putApiMovies(action) {
+  console.log('put');
   try {
     yield call(() => putData(action.id, action.data));
     const users = yield call(() => getData());
@@ -40,6 +41,7 @@ function* putApiMovies(action) {
   }
 }
 function* deleteApiUsers(action) {
+  console.log('delete');
   try {
     yield call(() => deleteData(action.id));
     const users = yield call(() => getData());
