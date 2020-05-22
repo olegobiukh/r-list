@@ -1,15 +1,13 @@
 import { GET_USERS, CREATE_USER, REQUEST_USERS, UPDATE_USER, DELETE_USER } from "./constants";
 
-export const getUsers = (data) => {
+export const getUsers = (res) => {
   return {
     type: GET_USERS,
-    payload: data,
+    payload: res.data,
   };
 };
 
 export const requestUsers = () => {
-  console.log(1);
-  
   return {
     type: REQUEST_USERS,
   };

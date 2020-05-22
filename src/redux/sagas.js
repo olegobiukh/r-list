@@ -1,16 +1,19 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import { getUsers } from "./actions";
-import { CREATE_USER, REQUEST_USERS, UPDATE_USER, DELETE_USER } from "./constants";
+import {
+  CREATE_USER,
+  REQUEST_USERS,
+  UPDATE_USER,
+  DELETE_USER,
+} from "./constants";
 import { postData, getData, deleteData, putData } from "./api";
 
 function* getApiUsers(action) {
-  console.log('get');
-  
   try {
     const users = yield call(() => getData());
     console.log(users);
-    
+
     yield put(getUsers(users));
   } catch (e) {
     console.log(e);
@@ -18,8 +21,6 @@ function* getApiUsers(action) {
 }
 
 function* postApiUsers(action) {
-  console.log('post');
-  
   try {
     yield call(() => postData(action.data));
     const users = yield call(() => getData());
@@ -30,7 +31,6 @@ function* postApiUsers(action) {
   }
 }
 function* putApiMovies(action) {
-  console.log('put');
   try {
     yield call(() => putData(action.id, action.data));
     const users = yield call(() => getData());
@@ -41,7 +41,6 @@ function* putApiMovies(action) {
   }
 }
 function* deleteApiUsers(action) {
-  console.log('delete');
   try {
     yield call(() => deleteData(action.id));
     const users = yield call(() => getData());
@@ -68,3 +67,9 @@ export function* sagaPost() {
   yield takeLatest(CREATE_USER, postApiUsers);
 }
 
+export const sagasData = [
+  takeLatest(REQUEST_USERS, getApiUsers),
+  takeLatest(DELETE_USER, deleteApiUsers),
+  takeLatest(UPDATE_USER, putApiMovies),
+  takeLatest(CREATE_USER, postApiUsers),
+];

@@ -4,15 +4,13 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import uid from "uid";
 import Pagination from "../../components/Pagination";
 import Wrapper from "../../components/Wrapper";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import uid from "uid";
 
 const List = ({ requestUsers, deleteUser, users }) => {
-  console.log(users);
-  
   let history = useHistory();
   const [currentPage, setCurrentPage] = useState(1);
   const [currentUsers, setCurrentUsers] = useState(users);
