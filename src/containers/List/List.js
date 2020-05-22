@@ -10,7 +10,7 @@ import Wrapper from "../../components/Wrapper";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-const List = ({ getUsers, deleteUser, users }) => {
+const List = ({ requestUsers, deleteUser, users }) => {
   console.log(users);
   
   let history = useHistory();
@@ -18,8 +18,8 @@ const List = ({ getUsers, deleteUser, users }) => {
   const [currentUsers, setCurrentUsers] = useState(users);
 
   useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+    requestUsers();
+  }, []);
 
   const currentUsersHandler = () => {
     const from = currentPage === 1 ? 1 : (currentPage - 1) * 5 + 1;
@@ -27,10 +27,6 @@ const List = ({ getUsers, deleteUser, users }) => {
     const newUsers = users.filter(
       (item, index) => index + 1 >= from && index + 1 <= to
     );
-
-    console.log(users);
-    console.log(newUsers);
-    console.log(from, to);
 
     setCurrentUsers(newUsers);
   };
@@ -77,7 +73,6 @@ const List = ({ getUsers, deleteUser, users }) => {
           </tr>
         ))
       : null;
-  console.log(users);
 
   const headers =
     users.length > 0

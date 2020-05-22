@@ -6,7 +6,7 @@ import * as actions from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import Wrapper from "../../components/Wrapper";
 
-const Update = ({ createUser, editUser, users, match }) => {
+const Update = ({ createUser, updateUser, users, match }) => {
   let history = useHistory();
 
   const [data, setFormData] = useState({
@@ -40,12 +40,12 @@ const Update = ({ createUser, editUser, users, match }) => {
     history.push("/r-list/");
   };
 
-  const updateUser = (event) => {
+  const editUser = (event) => {
     event.preventDefault();
 
     if (isUpdate) {
       const id = match.params.id;
-      editUser(id, data);
+      updateUser(id, data);
     } else {
       createUser(data);
     }
@@ -56,12 +56,12 @@ const Update = ({ createUser, editUser, users, match }) => {
       desc: "",
     });
 
-    history.push("/");
+    history.push("/r-list/");
   };
 
   return (
     <Wrapper title={isUpdate ? "Update the user" : "Add a new user"}>
-      <form className="col s12" onSubmit={updateUser}>
+      <form className="col s12" onSubmit={editUser}>
         <div className="row">
           <div className="input-field col s12">
             <input

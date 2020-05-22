@@ -1,57 +1,38 @@
-import axios from "axios";
-import { GET_USERS } from "./constants";
-const baseUsersUrl = "http://77.120.241.80:8911/api/users";
-const baseUserUrl = "http://77.120.241.80:8911/api/user/";
+import { GET_USERS, CREATE_USER, REQUEST_USERS, UPDATE_USER, DELETE_USER } from "./constants";
 
-const getList = (data) => {
+export const getUsers = (data) => {
   return {
     type: GET_USERS,
     payload: data,
   };
 };
 
-export const getUsers = () => {
-  return async (dispatch) => {
-    try {
-      const res = await axios.get(baseUsersUrl);
-      dispatch(getList(res.data));
-    } catch (e) {
-      console.log(e);
-    }
+export const requestUsers = () => {
+  console.log(1);
+  
+  return {
+    type: REQUEST_USERS,
   };
 };
 
 export const deleteUser = (id) => {
-  return async (dispatch) => {
-    try {
-      await axios.delete(baseUserUrl + id);
-      dispatch(getUsers());
-    } catch (e) {
-      console.log(e);
-    }
+  return {
+    type: DELETE_USER,
+    id,
+  };
+};
+
+export const updateUser = (id, data) => {
+  return {
+    type: UPDATE_USER,
+    id,
+    data,
   };
 };
 
 export const createUser = (data) => {
-  return async (dispatch) => {
-    try {
-      await axios.post(baseUsersUrl, data);
-      dispatch(getUsers());
-    } catch (e) {
-      console.log(e);
-    }
-  };
-};
-
-export const editUser = (id, data) => {
-  return function (dispatch) {
-    axios
-      .put(baseUserUrl + id, data)
-      .then((res) => {
-        dispatch(getUsers());
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  return {
+    type: CREATE_USER,
+    data,
   };
 };

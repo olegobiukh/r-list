@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAAA,KACE,cAAe,CACf,eAAgB,CAChB,SAAU,CACV,WAAY,CAJd,mBACE,eAAgB,CADlB,4BACE,mBAAoB,CADtB,gBAIE,YAAa,CACb,4BAA6B,CAC7B,wBAAyB,CACzB,kBAAmB,CANnB,yBADF,gBAEI,cAAe,CAMlB,CARD,sBACE,gBAAiB","file":"main.5968f705.chunk.css","sourcesContent":[".update__button--back {\r\n  margin-left: 20px;\r\n}"]}
